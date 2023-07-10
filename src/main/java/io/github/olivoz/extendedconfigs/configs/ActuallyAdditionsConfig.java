@@ -21,7 +21,8 @@ public final class ActuallyAdditionsConfig {
     @Config.Name("potion_ring")
     public PotionRing potionRing = new PotionRing();
 
-    public Lens lens = new Lens();
+    @Config.Name("mining_lens")
+    public MiningLens miningLens = new MiningLens();
 
     public static final class DisplayStand {
 
@@ -65,7 +66,7 @@ public final class ActuallyAdditionsConfig {
         public int ticksPerBlazeUsage = 10;
     }
 
-    public static final class Lens {
+    public static final class MiningLens {
 
         @Config.Comment("Actually Additions adds common ores and their weights by default. You can disable this behaviour here. Default: false")
         public boolean removeHardcodedOres = false;

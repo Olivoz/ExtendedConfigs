@@ -40,11 +40,11 @@ public final class LensMiningTransformer implements IClassTransformer {
             MethodVisitor mv = super.visitMethod(access, name, desc, signature, exceptions);
             switch (name) {
                 case "init":
-                    if (Config.ACTUALLY_ADDITIONS.lens.removeHardcodedOres) return new TransformInitMethod(mv);
+                    if (Config.ACTUALLY_ADDITIONS.miningLens.removeHardcodedOres) return new TransformInitMethod(mv);
                     break;
 
                 case "invoke":
-                    if (Config.ACTUALLY_ADDITIONS.lens.useEndstone) return new TransformInvokeMethod(mv);
+                    if (Config.ACTUALLY_ADDITIONS.miningLens.useEndstone) return new TransformInvokeMethod(mv);
                     break;
 
                 default:
