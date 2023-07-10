@@ -1,16 +1,13 @@
 {
   "refmap": "mixins.extendedconfigs.refmap.json",
-  "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "required": false,
   "compatibilityLevel": "JAVA_8",
-  "package": "io.github.olivoz.extendedconfigs.mixin",
+  "package": "io.github.olivoz.extendedconfigs.mixin.actuallyadditions",
   "mixins": [
     "MixinInitItems",
     "MixinItemFillingWand",
     "MixinItemPotionRing",
     "MixinTileEntityDisplayStand"
-  ],
-  "client": [
   ]
 }

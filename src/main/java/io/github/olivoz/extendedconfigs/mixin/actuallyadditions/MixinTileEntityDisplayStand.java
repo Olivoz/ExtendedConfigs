@@ -1,4 +1,4 @@
-package io.github.olivoz.extendedconfigs.mixin;
+package io.github.olivoz.extendedconfigs.mixin.actuallyadditions;
 
 import de.ellpeck.actuallyadditions.mod.tile.CustomEnergyStorage;
 import de.ellpeck.actuallyadditions.mod.tile.TileEntityDisplayStand;

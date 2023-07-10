@@ -1,4 +1,4 @@
-package io.github.olivoz.extendedconfigs.mixin;
+package io.github.olivoz.extendedconfigs.mixin.actuallyadditions;
 
 import de.ellpeck.actuallyadditions.mod.items.ItemPotionRing;
 import io.github.olivoz.extendedconfigs.configs.Config;

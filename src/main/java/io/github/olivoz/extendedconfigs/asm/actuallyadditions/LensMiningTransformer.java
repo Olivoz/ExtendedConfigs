@@ -1,4 +1,4 @@
-package io.github.olivoz.extendedconfigs.asm;
+package io.github.olivoz.extendedconfigs.asm.actuallyadditions;
 
 import io.github.olivoz.extendedconfigs.configs.Config;
 import net.minecraft.init.Blocks;
