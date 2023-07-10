@@ -12,6 +12,8 @@ import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 
+import java.util.List;
+
 public final class LensMiningTransformer implements IClassTransformer {
 
     private static final String TARGET_NAME = "de.ellpeck.actuallyadditions.mod.items.lens.LensMining";
@@ -85,6 +87,11 @@ public final class LensMiningTransformer implements IClassTransformer {
         public void visitInsn(int opcode) {
             if (hasPassedHardCodedWeights) super.visitInsn(opcode);
         }
+
+        @Override
+        public void visitLineNumber(int line, Label start) {
+            if (hasPassedHardCodedWeights) super.visitLineNumber(line, start);
+        }
     }
 
     static final class TransformInvokeMethod extends MethodVisitor {
@@ -94,6 +101,7 @@ public final class LensMiningTransformer implements IClassTransformer {
 
         boolean cancelAstore = false;
         boolean replaceIfeq = false;
+        int ifnullCouter = 0;
 
         public TransformInvokeMethod(final MethodVisitor mv) {
             super(Opcodes.ASM5, mv);
@@ -137,6 +145,16 @@ public final class LensMiningTransformer implements IClassTransformer {
 
         @Override
         public void visitJumpInsn(int opcode, Label label) {
+            if (opcode == Opcodes.IFNULL && ++ifnullCouter == 1) {
+                super.visitJumpInsn(opcode, label);
+                super.visitVarInsn(Opcodes.ALOAD, ORE_VAR_ID);
+
+                Type listType = Type.getType(List.class);
+                super.visitMethodInsn(Opcodes.INVOKEINTERFACE, listType.getInternalName(), "isEmpty", "()Z", true);
+                super.visitJumpInsn(Opcodes.IFNE, label);
+                return;
+            }
+
             if (opcode != Opcodes.IFEQ || !replaceIfeq) {
                 super.visitJumpInsn(opcode, label);
                 return;
