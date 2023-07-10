@@ -2,7 +2,8 @@ package io.github.olivoz.extendedconfigs;
 
 import net.minecraftforge.common.ForgeVersion;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
-import zone.rong.mixinbooter.IEarlyMixinLoader;
+import org.spongepowered.asm.launch.MixinBootstrap;
+import org.spongepowered.asm.mixin.Mixins;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
@@ -11,10 +12,15 @@ import java.util.Map;
 
 @IFMLLoadingPlugin.Name("ExtendedConfigs-Core")
 @IFMLLoadingPlugin.MCVersion(ForgeVersion.mcVersion)
-public class ExtendedConfigsCore implements IFMLLoadingPlugin, IEarlyMixinLoader {
+public class ExtendedConfigsCore implements IFMLLoadingPlugin {
 
     private static final List<String> MIXINS = Collections.singletonList(ExtendedConfig.MODID + ".mixins.json");
     private static final String[] TRANSFORMERS = {"io.github.olivoz.extendedconfigs.asm.LensMiningTransformer"};
+
+    public ExtendedConfigsCore() {
+        MixinBootstrap.init();
+        MIXINS.forEach(Mixins::addConfiguration);
+    }
 
     @Override
     public String[] getASMTransformerClass() {
@@ -39,10 +45,5 @@ public class ExtendedConfigsCore implements IFMLLoadingPlugin, IEarlyMixinLoader
     @Override
     public String getAccessTransformerClass() {
         return null;
-    }
-
-    @Override
-    public List<String> getMixinConfigs() {
-        return MIXINS;
     }
 }

@@ -11,6 +11,10 @@
       "Olivoz"
     ],
     "credits": "Credits to the original creators of these patches at https://github.com/Krutoy242/Enigmatica2Expert-Extended",
-    "logoFile": ""
+    "logoFile": "",
+    "dependencies": [
+      "MixinBootstrap",
+      "ConfigAnytime"
+    ]
   }
 ]
