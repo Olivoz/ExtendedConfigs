@@ -1,6 +1,5 @@
 package io.github.olivoz.extendedconfigs;
 
-import com.cleanroommc.configanytime.ConfigAnytime;
 import io.github.olivoz.extendedconfigs.configs.Config;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -15,12 +14,7 @@ public final class ExtendedConfig {
     public static final String MODID = "${mod_id}";
     public static final String NAME = "${mod_name}";
     public static final String VERSION = "${mod_version}";
-    public static final Config CONFIG = new Config();
     private static Logger logger;
-
-    static {
-        ConfigAnytime.register(Config.class);
-    }
 
     @Mod.EventHandler
     public static void preInit(FMLPreInitializationEvent event) {

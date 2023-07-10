@@ -1,5 +1,6 @@
 package io.github.olivoz.extendedconfigs;
 
+import com.cleanroommc.configanytime.ConfigAnytime;
 import io.github.olivoz.extendedconfigs.configs.Config;
 import net.minecraftforge.common.ForgeVersion;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
@@ -14,10 +15,9 @@ import java.util.Map;
 @IFMLLoadingPlugin.MCVersion(ForgeVersion.mcVersion)
 public class ExtendedConfigsCore implements IFMLLoadingPlugin {
 
-    private static final String[] TRANSFORMERS = {"io.github.olivoz.extendedconfigs.asm.actuallyadditions.LensMiningTransformer"};
-
     public ExtendedConfigsCore() {
         MixinBootstrap.init();
+        ConfigAnytime.register(Config.class);
     }
 
     @Override

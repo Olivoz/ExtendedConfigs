@@ -2,7 +2,7 @@ package io.github.olivoz.extendedconfigs.configs;
 
 import io.github.olivoz.extendedconfigs.ExtendedConfig;
 
-@net.minecraftforge.common.config.Config(modid = ExtendedConfig.MODID)
+@net.minecraftforge.common.config.Config(modid = ExtendedConfig.MODID, name = ExtendedConfig.MODID)
 public final class Config {
 
     @net.minecraftforge.common.config.Config.RequiresMcRestart
