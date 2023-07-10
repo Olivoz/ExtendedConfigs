@@ -20,6 +20,7 @@ public final class ExtendedConfig {
     public static void preInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
         if (Config.ACTUALLY_ADDITIONS.enabled) loadMixin("actuallyadditions");
+        loadMixin("bedrockores");
     }
 
     private static void loadMixin(final String target) {

@@ -1,0 +1,11 @@
+{
+  "refmap": "mixins.extendedconfigs.refmap.json",
+  "minVersion": "0.8",
+  "required": false,
+  "compatibilityLevel": "JAVA_8",
+  "package": "io.github.olivoz.extendedconfigs.mixin.bedrockores",
+  "mixins": [
+    "AbstractSubCommandAccessor",
+    "MixinSubCommandWrap"
+  ]
+}

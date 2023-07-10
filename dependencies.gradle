@@ -3,4 +3,5 @@ dependencies {
     implementation rfg.deobf('curse.maven:actually-additions-228404:3117927')
     implementation rfg.deobf('curse.maven:actually-baubles-273430:2459131')
     implementation rfg.deobf('curse.maven:baubles-227083:2518667')
+    implementation rfg.deobf('curse.maven:bedrockores-275083:2602707')
 }
