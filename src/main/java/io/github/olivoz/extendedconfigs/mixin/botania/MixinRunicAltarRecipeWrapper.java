@@ -12,8 +12,7 @@ import java.util.List;
 
 @Mixin(value = RunicAltarRecipeWrapper.class, remap = false)
 public abstract class MixinRunicAltarRecipeWrapper implements IRecipeWrapper {
-
-
+    
     @Shadow
     @Final
     private int manaUsage;

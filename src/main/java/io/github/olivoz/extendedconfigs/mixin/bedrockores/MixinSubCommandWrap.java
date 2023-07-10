@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(targets = "li.cil.bedrockores.common.command.SubCommandWrap")
+@Mixin(targets = "li.cil.bedrockores.common.command.SubCommandWrap", remap = false)
 public abstract class MixinSubCommandWrap {
 
     @Unique

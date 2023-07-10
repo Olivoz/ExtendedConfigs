@@ -1,7 +1,6 @@
 package io.github.olivoz.extendedconfigs.mixin.botania;
 
 import com.google.common.collect.ImmutableList;
-import mezz.jei.api.recipe.IRecipeWrapper;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -13,7 +12,7 @@ import vazkii.botania.client.integration.jei.manapool.ManaPoolRecipeWrapper;
 import java.util.List;
 
 @Mixin(value = ManaPoolRecipeWrapper.class, remap = false)
-public abstract class MixinManaPoolRecipeWrapper implements IRecipeWrapper {
+public abstract class MixinManaPoolRecipeWrapper {
 
     @Shadow
     @Final
