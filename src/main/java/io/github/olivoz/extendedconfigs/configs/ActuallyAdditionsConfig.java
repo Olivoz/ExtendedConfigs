@@ -41,7 +41,7 @@ public final class ActuallyAdditionsConfig {
         @Config.Comment({"The amount of energy (CF) that a battery can contain. Removing an entry will use defaults.", "Defaults:", "item_battery: 200000", "item_battery_double: 350000", "item_battery_triple: 600000", "item_battery_quadruple: 1000000", "item_battery_quintuple: 2000000",})
         public Map<String, Integer> capacities;
 
-        @Config.Name("transferRates")
+        @Config.Name("transfer_rates")
         @Config.Comment({"The amount of energy (CF/t) that a battery can transfer per tick. Removing an entry will use defaults.", "Defaults:", "item_battery: 1000", "item_battery_double: 5000", "item_battery_triple: 10000", "item_battery_quadruple: 30000", "item_battery_quintuple: 100000",})
         public Map<String, Integer> transferRates;
 

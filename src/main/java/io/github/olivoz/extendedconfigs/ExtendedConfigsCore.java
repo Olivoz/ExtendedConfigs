@@ -26,6 +26,9 @@ public class ExtendedConfigsCore implements IFMLLoadingPlugin {
         if (Config.ACTUALLY_ADDITIONS.enabled)
             transformers.add("io.github.olivoz.extendedconfigs.asm.actuallyadditions.LensMiningTransformer");
 
+        if (Config.ACTUALLY_BAUBLES.enabled)
+            transformers.add("io.github.olivoz.extendedconfigs.asm.actuallybaubles.ActuallyBaublesTransformer");
+
         return transformers.toArray(new String[0]);
     }
 

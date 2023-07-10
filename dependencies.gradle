@@ -1,4 +1,6 @@
 dependencies {
     implementation 'com.cleanroommc:configanytime:1.0'
     implementation rfg.deobf('curse.maven:actually-additions-228404:3117927')
+    implementation rfg.deobf('curse.maven:actually-baubles-273430:2459131')
+    implementation rfg.deobf('curse.maven:baubles-227083:2518667')
 }
