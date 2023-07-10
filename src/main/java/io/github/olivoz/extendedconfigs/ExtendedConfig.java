@@ -25,7 +25,7 @@ public final class ExtendedConfig {
     @Mod.EventHandler
     public static void preInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
-        loadMixin("actuallyadditions");
+        if (Config.ACTUALLY_ADDITIONS.enabled) loadMixin("actuallyadditions");
     }
 
     private static void loadMixin(final String target) {

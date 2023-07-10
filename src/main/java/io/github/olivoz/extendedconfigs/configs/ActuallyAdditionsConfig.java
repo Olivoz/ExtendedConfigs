@@ -7,6 +7,9 @@ import java.util.Map;
 
 public final class ActuallyAdditionsConfig {
 
+    @Config.Comment("Toggle for all changes to Actually Additions. Default: false")
+    public boolean enabled = false;
+
     @Config.Name("display_stand")
     public DisplayStand displayStand = new DisplayStand();
 
