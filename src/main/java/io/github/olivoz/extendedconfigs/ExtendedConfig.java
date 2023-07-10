@@ -21,6 +21,7 @@ public final class ExtendedConfig {
         logger = event.getModLog();
         if (Config.ACTUALLY_ADDITIONS.enabled) loadMixin("actuallyadditions");
         loadMixin("bedrockores");
+        loadMixin("botania");
     }
 
     private static void loadMixin(final String target) {
