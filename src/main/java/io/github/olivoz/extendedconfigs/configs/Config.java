@@ -21,4 +21,8 @@ public final class Config {
     @net.minecraftforge.common.config.Config.RequiresMcRestart
     @net.minecraftforge.common.config.Config.Comment("This section contains settings for the Ex Compressum mod")
     public static final ExCompressumConfig EX_COMPRESSUM = new ExCompressumConfig();
+
+    @net.minecraftforge.common.config.Config.RequiresMcRestart
+    @net.minecraftforge.common.config.Config.Comment("This section contains settings for the Immersive Cables mod")
+    public static final ImmersiveCablesConfig IMMERSIVE_CABLES = new ImmersiveCablesConfig();
 }

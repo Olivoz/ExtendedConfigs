@@ -23,6 +23,8 @@ public final class ExtendedConfig {
         if (Config.BEDROCK_ORES.enabled) loadMixin("bedrockores");
         if (Config.BOTANIA.enabled) loadMixin("botania");
         if (Config.EX_COMPRESSUM.enabled) loadMixin("excompressum");
+        if (Config.IMMERSIVE_CABLES.enabled && Config.IMMERSIVE_CABLES.disableWireLighting)
+            loadMixin("immersivecables");
     }
 
     private static void loadMixin(final String target) {
