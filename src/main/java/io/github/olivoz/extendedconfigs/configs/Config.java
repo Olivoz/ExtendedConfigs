@@ -25,4 +25,8 @@ public final class Config {
     @net.minecraftforge.common.config.Config.RequiresMcRestart
     @net.minecraftforge.common.config.Config.Comment("This section contains settings for the Immersive Cables mod")
     public static final ImmersiveCablesConfig IMMERSIVE_CABLES = new ImmersiveCablesConfig();
+
+    @net.minecraftforge.common.config.Config.RequiresMcRestart
+    @net.minecraftforge.common.config.Config.Comment("This section contains settings for the Immersive Engineering mod")
+    public static final ImmersiveEngineeringConfig IMMERSIVE_ENGINEERING = new ImmersiveEngineeringConfig();
 }

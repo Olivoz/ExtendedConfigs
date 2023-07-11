@@ -25,6 +25,7 @@ public final class ExtendedConfig {
         if (Config.EX_COMPRESSUM.enabled) loadMixin("excompressum");
         if (Config.IMMERSIVE_CABLES.enabled && Config.IMMERSIVE_CABLES.disableWireLighting)
             loadMixin("immersivecables");
+        if (Config.IMMERSIVE_ENGINEERING.enabled) loadMixin("immersiveengineering");
     }
 
     private static void loadMixin(final String target) {
