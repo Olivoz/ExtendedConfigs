@@ -22,6 +22,7 @@ public final class ExtendedConfig {
         if (Config.ACTUALLY_ADDITIONS.enabled) loadMixin("actuallyadditions");
         loadMixin("bedrockores");
         loadMixin("botania");
+        if (Config.EX_COMPRESSUM.enabled) loadMixin("excompressum");
     }
 
     private static void loadMixin(final String target) {

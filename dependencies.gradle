@@ -6,4 +6,5 @@ dependencies {
     implementation rfg.deobf('curse.maven:bedrockores-275083:2602707')
     implementation rfg.deobf('curse.maven:botania-225643:3330934')
     implementation rfg.deobf('curse.maven:had-enough-items-557549:4571247')
+    implementation rfg.deobf('curse.maven:ex-compressum-241967:2966941')
 }
