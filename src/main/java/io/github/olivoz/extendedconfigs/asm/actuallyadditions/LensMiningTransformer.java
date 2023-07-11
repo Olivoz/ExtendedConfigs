@@ -113,7 +113,7 @@ public final class LensMiningTransformer implements IClassTransformer {
             if (!name.equals("STONE_ORES")) return;
             cancelAstore = true;
             super.visitVarInsn(Opcodes.ASTORE, ORE_VAR_ID);
-            super.visitIincInsn(ADAPTED_USE_VAR_ID, 10000);
+            super.visitIincInsn(ADAPTED_USE_VAR_ID, Config.ACTUALLY_ADDITIONS.miningLens.stoneAdditionalEnergyCost);
         }
 
         @Override
@@ -128,7 +128,9 @@ public final class LensMiningTransformer implements IClassTransformer {
 
         @Override
         public void visitIincInsn(int varId, int increment) {
-            if (varId != ADAPTED_USE_VAR_ID) super.visitIincInsn(varId, increment);
+            int inc = varId == ADAPTED_USE_VAR_ID ? Config.ACTUALLY_ADDITIONS.miningLens.netherrackAdditionalEnergyCost : increment;
+            if (inc == 0) return;
+            super.visitIincInsn(varId, inc);
         }
 
         @Override

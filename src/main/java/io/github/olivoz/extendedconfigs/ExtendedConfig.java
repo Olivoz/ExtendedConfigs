@@ -20,8 +20,8 @@ public final class ExtendedConfig {
     public static void preInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
         if (Config.ACTUALLY_ADDITIONS.enabled) loadMixin("actuallyadditions");
-        loadMixin("bedrockores");
-        loadMixin("botania");
+        if (Config.BEDROCK_ORES.enabled) loadMixin("bedrockores");
+        if (Config.BOTANIA.enabled) loadMixin("botania");
         if (Config.EX_COMPRESSUM.enabled) loadMixin("excompressum");
     }
 

@@ -10,6 +10,9 @@ public final class ExCompressumConfig {
     @Config.Name("auto_sieve")
     public AutoSieve autoSieve = new AutoSieve();
 
+    ExCompressumConfig() {
+    }
+
     public static final class AutoSieve {
 
         @Config.Comment("The amount of energy (RF) that the Auto Sieve can hold. Default: 32000")

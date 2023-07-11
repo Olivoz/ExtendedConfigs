@@ -1,6 +1,7 @@
 package io.github.olivoz.extendedconfigs.mixin.botania;
 
 import com.google.common.collect.ImmutableList;
+import io.github.olivoz.extendedconfigs.configs.Config;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -20,7 +21,7 @@ public abstract class MixinManaPoolRecipeWrapper {
 
     @Inject(method = "getTooltipStrings(II)Ljava/util/List;", at = @At("HEAD"), cancellable = true)
     public void extendedConfigsMixinGetToolTipStrings(int mouseX, int mouseY, CallbackInfoReturnable<List<String>> cir) {
-        if (mouseX > 20 && mouseX < 125 && mouseY > 50 && mouseY < 54) {
+        if (Config.BOTANIA.manaPool.showManaCost && mouseX > 20 && mouseX < 125 && mouseY > 50 && mouseY < 54) {
             cir.setReturnValue(ImmutableList.of(mana + " Mana"));
         }
     }

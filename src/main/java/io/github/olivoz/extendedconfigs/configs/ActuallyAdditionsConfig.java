@@ -7,12 +7,15 @@ import java.util.Map;
 
 public final class ActuallyAdditionsConfig {
 
+    @Config.RequiresMcRestart
     @Config.Comment("Toggle for all changes to Actually Additions. Default: false")
     public boolean enabled = false;
 
+    @Config.RequiresMcRestart
     @Config.Name("display_stand")
     public DisplayStand displayStand = new DisplayStand();
 
+    @Config.RequiresMcRestart
     public Batteries batteries = new Batteries();
 
     @Config.Name("handheld_filler")
@@ -21,8 +24,12 @@ public final class ActuallyAdditionsConfig {
     @Config.Name("potion_ring")
     public PotionRing potionRing = new PotionRing();
 
+    @Config.RequiresMcRestart
     @Config.Name("mining_lens")
     public MiningLens miningLens = new MiningLens();
+
+    ActuallyAdditionsConfig() {
+    }
 
     public static final class DisplayStand {
 
@@ -34,6 +41,9 @@ public final class ActuallyAdditionsConfig {
 
         @Config.Comment("The amount of energy (CF/t) that can be extracted from a display stand each tick. Default: 0")
         public int maxExtract = 0;
+
+        DisplayStand() {
+        }
     }
 
     public static final class Batteries {
@@ -45,7 +55,7 @@ public final class ActuallyAdditionsConfig {
         @Config.Comment({"The amount of energy (CF/t) that a battery can transfer per tick. Removing an entry will use defaults.", "Defaults:", "item_battery: 1000", "item_battery_double: 5000", "item_battery_triple: 10000", "item_battery_quadruple: 30000", "item_battery_quintuple: 100000",})
         public Map<String, Integer> transferRates;
 
-        public Batteries() {
+        Batteries() {
             String[] keys = {"item_battery", "item_battery_double", "item_battery_triple", "item_battery_quadruple", "item_battery_quintuple"};
             int[] capacityValues = {200000, 350000, 600000, 1000000, 2000000};
             int[] transferRateValues = {1000, 5000, 10000, 30000, 100000};
@@ -58,6 +68,9 @@ public final class ActuallyAdditionsConfig {
 
         @Config.Comment("The amount of energy (CF) that the item filling want will use per block filled. Default: 1500")
         public int energyPerBlock = 1500;
+
+        FillingWand() {
+        }
     }
 
     public static final class PotionRing {
@@ -71,7 +84,16 @@ public final class ActuallyAdditionsConfig {
         @Config.Comment("Actually Additions adds common ores and their weights by default. You can disable this behaviour here. Default: false")
         public boolean removeHardcodedOres = false;
 
-        @Config.Comment("Use Endstone instead of Stone when creating ores. Default: false")
+        @Config.Comment("Use endstone instead of stone when creating ores. Default: false")
         public boolean useEndstone = false;
+
+        @Config.Comment("Additional energy consumed when transforming a stone block. Default: 0")
+        public int stoneAdditionalEnergyCost = 0;
+
+        @Config.Comment("Additional energy consumed when transforming a netherrack block. Default: 0")
+        public int netherrackAdditionalEnergyCost = 0;
+
+        MiningLens() {
+        }
     }
 }

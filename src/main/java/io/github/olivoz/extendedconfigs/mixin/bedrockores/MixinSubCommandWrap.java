@@ -1,5 +1,6 @@
 package io.github.olivoz.extendedconfigs.mixin.bedrockores;
 
+import io.github.olivoz.extendedconfigs.configs.Config;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -20,11 +21,11 @@ public abstract class MixinSubCommandWrap {
 
     @Inject(method = "execute", at = @At(value = "INVOKE", shift = At.Shift.BEFORE, target = "Lli/cil/bedrockores/common/command/SubCommandWrap;getLookedAtBlockPos(Lnet/minecraft/command/ICommandSender;)Lnet/minecraft/util/math/BlockPos;"))
     public void extendedConfigsMixinExecuteStoreArgs(MinecraftServer server, ICommandSender sender, String[] extendedConfigs$args, CallbackInfo ci) {
-        this.extendedConfigs$args = extendedConfigs$args;
+        if (Config.BEDROCK_ORES.setWarpCommandLocation) this.extendedConfigs$args = extendedConfigs$args;
     }
 
     @Redirect(method = "execute", at = @At(value = "INVOKE", target = "Lli/cil/bedrockores/common/command/SubCommandWrap;getLookedAtBlockPos(Lnet/minecraft/command/ICommandSender;)Lnet/minecraft/util/math/BlockPos;"))
     public BlockPos extendedConfigsMixinExecute(ICommandSender sender) throws CommandException {
-        return extendedConfigs$args.length > 3 ? new BlockPos(CommandBase.parseInt(extendedConfigs$args[1]), CommandBase.parseInt(extendedConfigs$args[2]), CommandBase.parseInt(extendedConfigs$args[3])) : AbstractSubCommandAccessor.getLookedAtBlockPos(sender);
+        return Config.BEDROCK_ORES.setWarpCommandLocation && extendedConfigs$args.length > 3 ? new BlockPos(CommandBase.parseInt(extendedConfigs$args[1]), CommandBase.parseInt(extendedConfigs$args[2]), CommandBase.parseInt(extendedConfigs$args[3])) : AbstractSubCommandAccessor.getLookedAtBlockPos(sender);
     }
 }
