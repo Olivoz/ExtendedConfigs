@@ -29,4 +29,8 @@ public final class Config {
     @net.minecraftforge.common.config.Config.RequiresMcRestart
     @net.minecraftforge.common.config.Config.Comment("This section contains settings for the Immersive Engineering mod")
     public static final ImmersiveEngineeringConfig IMMERSIVE_ENGINEERING = new ImmersiveEngineeringConfig();
+
+    @net.minecraftforge.common.config.Config.RequiresMcRestart
+    @net.minecraftforge.common.config.Config.Comment("This section contains settings for the Just Enough Resources mod")
+    public static final JustEnoughResourcesConfig JUST_ENOUGH_RESOURCES = new JustEnoughResourcesConfig();
 }

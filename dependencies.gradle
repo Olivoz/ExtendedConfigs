@@ -10,4 +10,5 @@ dependencies {
     implementation rfg.deobf('curse.maven:immersive-engineering-231951:2974106')
     implementation rfg.deobf('curse.maven:ae2-extended-life-570458:4632516')
     implementation rfg.deobf('curse.maven:immersive-283992:2595013')
+    implementation rfg.deobf('curse.maven:just-enough-resources-jer-240630:2728585')
 }

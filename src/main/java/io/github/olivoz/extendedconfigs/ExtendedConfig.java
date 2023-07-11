@@ -26,6 +26,7 @@ public final class ExtendedConfig {
         if (Config.IMMERSIVE_CABLES.enabled && Config.IMMERSIVE_CABLES.disableWireLighting)
             loadMixin("immersivecables");
         if (Config.IMMERSIVE_ENGINEERING.enabled) loadMixin("immersiveengineering");
+        if (Config.JUST_ENOUGH_RESOURCES.enabled) loadMixin("jeresources");
     }
 
     private static void loadMixin(final String target) {
