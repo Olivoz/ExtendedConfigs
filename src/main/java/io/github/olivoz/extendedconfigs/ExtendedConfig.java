@@ -28,6 +28,7 @@ public final class ExtendedConfig {
         if (Config.IMMERSIVE_ENGINEERING.enabled) loadMixin("immersiveengineering");
         if (Config.JUST_ENOUGH_RESOURCES.enabled) loadMixin("jeresources");
         if (Config.LIB_VULPES.enabled) loadMixin("libvulpes");
+        if (Config.ENDER_IO.enabled) loadMixin("enderio");
     }
 
     private static void loadMixin(final String target) {

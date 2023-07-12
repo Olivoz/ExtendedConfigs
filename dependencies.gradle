@@ -6,6 +6,8 @@ dependencies {
     implementation rfg.deobf('curse.maven:bedrockores-275083:2602707')
     implementation rfg.deobf('curse.maven:botania-225643:3330934')
     implementation rfg.deobf('curse.maven:had-enough-items-557549:4571247')
+    compileOnly rfg.deobf('curse.maven:ender-core-231868:2972849')
+    compileOnly rfg.deobf('curse.maven:ender-io-64578:3328811')
     implementation rfg.deobf('curse.maven:ex-compressum-241967:2966941')
     implementation rfg.deobf('curse.maven:immersive-engineering-231951:2974106')
     implementation rfg.deobf('curse.maven:ae2-extended-life-570458:4632516')
