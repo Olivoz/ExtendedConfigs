@@ -45,4 +45,8 @@ public final class Config {
     @net.minecraftforge.common.config.Config.RequiresMcRestart
     @net.minecraftforge.common.config.Config.Comment("This section contains settings for the Old Java Warning mod")
     public static final OldJavaWarningConfig OLD_JAVA_WARNING = new OldJavaWarningConfig();
+
+    @net.minecraftforge.common.config.Config.RequiresMcRestart
+    @net.minecraftforge.common.config.Config.Comment("This section contains settings for the Open Computers mod")
+    public static final OpenComputersConfig OPEN_COMPUTERS = new OpenComputersConfig();
 }

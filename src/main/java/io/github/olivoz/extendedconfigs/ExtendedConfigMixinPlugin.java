@@ -6,9 +6,10 @@ import com.google.common.collect.Lists;
 import crazypants.enderio.base.EnderIO;
 import de.ellpeck.actuallyadditions.mod.ActuallyAdditions;
 import io.github.olivoz.extendedconfigs.configs.Config;
-import me.jacky1356400.actuallybaubles.ActuallyBaubles;
 import net.blay09.mods.excompressum.ExCompressum;
 import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.relauncher.FMLLaunchHandler;
+import net.minecraftforge.fml.relauncher.Side;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -42,12 +43,11 @@ public final class ExtendedConfigMixinPlugin implements IMixinConfigPlugin {
     }
 
     private static boolean isMixinEnabledConfig(String modName) {
+        Side side = FMLLaunchHandler.side();
+
         switch (modName) {
             case ActuallyAdditions.MODID:
                 return Config.ACTUALLY_ADDITIONS.enabled;
-
-            case ActuallyBaubles.MODID:
-                return Config.ACTUALLY_BAUBLES.enabled;
 
             case "bedrockores":
                 return Config.BEDROCK_ORES.enabled;
@@ -59,7 +59,7 @@ public final class ExtendedConfigMixinPlugin implements IMixinConfigPlugin {
                 return Config.EX_COMPRESSUM.enabled;
 
             case "immersivecables":
-                return Config.IMMERSIVE_CABLES.enabled && Config.IMMERSIVE_CABLES.disableWireLighting;
+                return side.isClient() && Config.IMMERSIVE_CABLES.enabled && Config.IMMERSIVE_CABLES.disableWireLighting;
 
             case ImmersiveEngineering.MODID:
                 return Config.IMMERSIVE_ENGINEERING.enabled;
@@ -76,8 +76,11 @@ public final class ExtendedConfigMixinPlugin implements IMixinConfigPlugin {
             case "oldjava":
                 return Config.OLD_JAVA_WARNING.enabled && Config.OLD_JAVA_WARNING.fixVersionCheck;
 
+            case "opencomputers":
+                return Config.OPEN_COMPUTERS.enabled;
+
             default:
-                return false;
+                return true;
         }
     }
 
@@ -130,6 +133,9 @@ public final class ExtendedConfigMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
+        Side side = FMLLaunchHandler.side();
+        if (side.isServer() && mixinClassName.endsWith("MixinUpgradeTank")) return false;
+
         return true;
     }
 

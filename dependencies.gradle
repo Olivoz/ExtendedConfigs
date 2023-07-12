@@ -15,4 +15,5 @@ dependencies {
     implementation rfg.deobf('curse.maven:just-enough-resources-jer-240630:2728585')
     implementation rfg.deobf('curse.maven:libvulpes-236541:3801015')
     implementation rfg.deobf('curse.maven:oldjavawarning-293496:2867050')
+    implementation rfg.deobf('curse.maven:opencomputers-223008:4630537')
 }
