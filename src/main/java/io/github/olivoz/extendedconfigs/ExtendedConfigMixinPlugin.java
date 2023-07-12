@@ -1,7 +1,13 @@
 package io.github.olivoz.extendedconfigs;
 
+import blusunrize.immersiveengineering.ImmersiveEngineering;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import crazypants.enderio.base.EnderIO;
+import de.ellpeck.actuallyadditions.mod.ActuallyAdditions;
+import io.github.olivoz.extendedconfigs.configs.Config;
+import me.jacky1356400.actuallybaubles.ActuallyBaubles;
+import net.blay09.mods.excompressum.ExCompressum;
 import net.minecraftforge.fml.common.Loader;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
@@ -32,7 +38,47 @@ public final class ExtendedConfigMixinPlugin implements IMixinConfigPlugin {
 
     private static boolean isMixinEnabled(String name) {
         String modName = name.substring(0, name.lastIndexOf('/'));
-        return Loader.isModLoaded(modName);
+        return Loader.isModLoaded(modName) && isMixinEnabledConfig(modName);
+    }
+
+    private static boolean isMixinEnabledConfig(String modName) {
+        switch (modName) {
+            case ActuallyAdditions.MODID:
+                return Config.ACTUALLY_ADDITIONS.enabled;
+
+            case ActuallyBaubles.MODID:
+                return Config.ACTUALLY_BAUBLES.enabled;
+
+            case "bedrockores":
+                return Config.BEDROCK_ORES.enabled;
+
+            case "botania":
+                return Config.BOTANIA.enabled;
+
+            case ExCompressum.MOD_ID:
+                return Config.EX_COMPRESSUM.enabled;
+
+            case "immersivecables":
+                return Config.IMMERSIVE_CABLES.enabled;
+
+            case ImmersiveEngineering.MODID:
+                return Config.IMMERSIVE_ENGINEERING.enabled;
+
+            case "jeresources":
+                return Config.JUST_ENOUGH_RESOURCES.enabled;
+
+            case "libvulpes":
+                return Config.LIB_VULPES.enabled;
+
+            case EnderIO.MODID:
+                return Config.ENDER_IO.enabled;
+
+            case "oldjava":
+                return Config.OLD_JAVA_WARNING.enabled;
+
+            default:
+                return false;
+        }
     }
 
     private static Stream<Path> streamPath(Path path) {
@@ -53,7 +99,7 @@ public final class ExtendedConfigMixinPlugin implements IMixinConfigPlugin {
         ClassLoader classLoader = ExtendedConfig.class.getClassLoader();
         URL packageURL = classLoader.getResource(packageFolder);
 
-        assert packageURL != null;
+        if (packageURL == null) return;
         String[] uriParts = packageURL.getPath().split("!");
         Path jarPath = Paths.get(URI.create(uriParts[0]));
         try (FileSystem fs = FileSystems.newFileSystem(jarPath, classLoader);
