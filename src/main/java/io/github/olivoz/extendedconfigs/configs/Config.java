@@ -33,4 +33,8 @@ public final class Config {
     @net.minecraftforge.common.config.Config.RequiresMcRestart
     @net.minecraftforge.common.config.Config.Comment("This section contains settings for the Just Enough Resources mod")
     public static final JustEnoughResourcesConfig JUST_ENOUGH_RESOURCES = new JustEnoughResourcesConfig();
+
+    @net.minecraftforge.common.config.Config.RequiresMcRestart
+    @net.minecraftforge.common.config.Config.Comment("This section contains settings for the Lib Vulpes mod")
+    public static final LibVulpesConfig LIB_VULPES = new LibVulpesConfig();
 }
