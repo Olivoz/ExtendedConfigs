@@ -3,8 +3,6 @@
   "minVersion": "0.8",
   "required": false,
   "compatibilityLevel": "JAVA_8",
-  "package": "io.github.olivoz.extendedconfigs.mixin.enderio",
-  "mixins": [
-    "MixinTankRecipeCategory"
-  ]
+  "package": "io.github.olivoz.extendedconfigs.mixin",
+  "plugin": "io.github.olivoz.extendedconfigs.ExtendedConfigMixinPlugin"
 }
