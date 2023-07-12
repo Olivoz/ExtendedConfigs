@@ -23,38 +23,7 @@ import java.util.stream.Stream;
 
 public final class ExtendedConfigMixinPlugin implements IMixinConfigPlugin {
 
-    public static final List<String> MIXINS;
-    private static final String MIXIN_PACKAGE_NAME = ExtendedConfig.class.getPackage().getName() + ".mixin";
-
-    static {
-        String[] mixins = new String[0];
-        String packageFolder = MIXIN_PACKAGE_NAME.replaceAll("[.]", "/");
-        ClassLoader classLoader = ExtendedConfig.class.getClassLoader();
-        URL packageURL = classLoader.getResource(packageFolder);
-
-        assert packageURL != null;
-        String[] uriParts = packageURL.getPath().split("!");
-        Path jarPath = Paths.get(URI.create(uriParts[0]));
-        try (FileSystem fs = FileSystems.newFileSystem(jarPath, classLoader);
-             DirectoryStream<Path> directoryStream = Files.newDirectoryStream(fs.getPath(uriParts[1]))
-        ) {
-            List<Path> files = Lists.newArrayList(directoryStream);
-            mixins = files
-                    .stream()
-                    .flatMap(ExtendedConfigMixinPlugin::streamPath)
-                    .map(Path::toString)
-                    .filter(name -> name.endsWith(".class"))
-                    .map(name -> name.substring(MIXIN_PACKAGE_NAME.length() + 2, name.length() - ".class".length()))
-                    .filter(ExtendedConfigMixinPlugin::isMixin)
-                    .filter(ExtendedConfigMixinPlugin::isMixinEnabled)
-                    .map(name -> name.replace('/', '.'))
-                    .toArray(String[]::new);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            MIXINS = ImmutableList.copyOf(mixins);
-        }
-    }
+    private List<String> mixins = null;
 
     private static boolean isMixin(String name) {
         String fileName = name.substring(name.lastIndexOf('/') + 1);
@@ -79,7 +48,33 @@ public final class ExtendedConfigMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public void onLoad(String mixinPackage) {
+        String[] mixinArray = new String[0];
+        String packageFolder = mixinPackage.replaceAll("[.]", "/");
+        ClassLoader classLoader = ExtendedConfig.class.getClassLoader();
+        URL packageURL = classLoader.getResource(packageFolder);
 
+        assert packageURL != null;
+        String[] uriParts = packageURL.getPath().split("!");
+        Path jarPath = Paths.get(URI.create(uriParts[0]));
+        try (FileSystem fs = FileSystems.newFileSystem(jarPath, classLoader);
+             DirectoryStream<Path> directoryStream = Files.newDirectoryStream(fs.getPath(uriParts[1]))
+        ) {
+            List<Path> files = Lists.newArrayList(directoryStream);
+            mixinArray = files
+                    .stream()
+                    .flatMap(ExtendedConfigMixinPlugin::streamPath)
+                    .map(Path::toString)
+                    .filter(name -> name.endsWith(".class"))
+                    .map(name -> name.substring(mixinPackage.length() + 2, name.length() - ".class".length()))
+                    .filter(ExtendedConfigMixinPlugin::isMixin)
+                    .filter(ExtendedConfigMixinPlugin::isMixinEnabled)
+                    .map(name -> name.replace('/', '.'))
+                    .toArray(String[]::new);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            this.mixins = ImmutableList.copyOf(mixinArray);
+        }
     }
 
     @Override
@@ -99,7 +94,7 @@ public final class ExtendedConfigMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public List<String> getMixins() {
-        return MIXINS;
+        return mixins;
     }
 
     @Override
