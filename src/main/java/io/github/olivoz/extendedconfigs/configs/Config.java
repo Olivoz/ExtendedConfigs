@@ -41,4 +41,8 @@ public final class Config {
     @net.minecraftforge.common.config.Config.RequiresMcRestart
     @net.minecraftforge.common.config.Config.Comment("This section contains settings for the Ender IO mod")
     public static final EnderIOConfig ENDER_IO = new EnderIOConfig();
+
+    @net.minecraftforge.common.config.Config.RequiresMcRestart
+    @net.minecraftforge.common.config.Config.Comment("This section contains settings for the Old Java Warning mod")
+    public static final OldJavaWarningConfig OLD_JAVA_WARNING = new OldJavaWarningConfig();
 }

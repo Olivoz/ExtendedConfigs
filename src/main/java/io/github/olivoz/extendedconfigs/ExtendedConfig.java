@@ -14,10 +14,13 @@ public final class ExtendedConfig {
     public static final String VERSION = "${mod_version}";
     private static Logger logger;
 
+    public ExtendedConfig() {
+        Mixins.addConfiguration(ExtendedConfig.MODID + ".mixins.json");
+    }
+
     @Mod.EventHandler
     public static void preInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
-        Mixins.addConfiguration(ExtendedConfig.MODID + ".mixins.json");
     }
 
     @Mod.EventHandler

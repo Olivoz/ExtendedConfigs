@@ -13,8 +13,8 @@
     "credits": "Credits to the original creators of these patches at https://github.com/Krutoy242/Enigmatica2Expert-Extended",
     "logoFile": "",
     "dependencies": [
-      "MixinBootstrap",
-      "ConfigAnytime"
+      "mixinbootstrap",
+      "configanytime"
     ]
   }
 ]
