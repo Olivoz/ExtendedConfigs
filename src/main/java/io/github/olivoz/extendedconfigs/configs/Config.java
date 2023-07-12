@@ -49,4 +49,8 @@ public final class Config {
     @net.minecraftforge.common.config.Config.RequiresMcRestart
     @net.minecraftforge.common.config.Config.Comment("This section contains settings for the Open Computers mod")
     public static final OpenComputersConfig OPEN_COMPUTERS = new OpenComputersConfig();
+
+    @net.minecraftforge.common.config.Config.RequiresMcRestart
+    @net.minecraftforge.common.config.Config.Comment("This section contains settings for the Open Terrain Generator (OTG) mod")
+    public static final OpenTerrainGeneratorConfig OPEN_TERRAIN_GENERATOR = new OpenTerrainGeneratorConfig();
 }

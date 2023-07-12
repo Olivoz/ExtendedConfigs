@@ -78,6 +78,9 @@ public final class ExtendedConfigMixinPlugin implements IMixinConfigPlugin {
             case "opencomputers":
                 return Config.OPEN_COMPUTERS.enabled;
 
+            case "openterraingenerator":
+                return Config.OPEN_TERRAIN_GENERATOR.enabled;
+
             default:
                 return true;
         }
