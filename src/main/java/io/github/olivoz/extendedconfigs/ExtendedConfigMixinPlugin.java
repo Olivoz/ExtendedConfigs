@@ -59,7 +59,7 @@ public final class ExtendedConfigMixinPlugin implements IMixinConfigPlugin {
                 return Config.EX_COMPRESSUM.enabled;
 
             case "immersivecables":
-                return Config.IMMERSIVE_CABLES.enabled;
+                return Config.IMMERSIVE_CABLES.enabled && Config.IMMERSIVE_CABLES.disableWireLighting;
 
             case ImmersiveEngineering.MODID:
                 return Config.IMMERSIVE_ENGINEERING.enabled;
@@ -74,7 +74,7 @@ public final class ExtendedConfigMixinPlugin implements IMixinConfigPlugin {
                 return Config.ENDER_IO.enabled;
 
             case "oldjava":
-                return Config.OLD_JAVA_WARNING.enabled;
+                return Config.OLD_JAVA_WARNING.enabled && Config.OLD_JAVA_WARNING.fixVersionCheck;
 
             default:
                 return false;
