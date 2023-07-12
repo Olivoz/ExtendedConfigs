@@ -23,7 +23,6 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
@@ -84,12 +83,10 @@ public final class ExtendedConfigMixinPlugin implements IMixinConfigPlugin {
         }
     }
 
-    private static Stream<Path> streamPath(Path path) {
+    private static Stream<Path> walkPath(Path path) {
         if (Files.isRegularFile(path)) return Stream.of(path);
-        try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(path)) {
-            List<Path> folderFiles = new ArrayList<>();
-            directoryStream.forEach(folderFiles::add);
-            return folderFiles.stream();
+        try {
+            return Files.walk(path);
         } catch (IOException e) {
             return Stream.of(path);
         }
@@ -111,7 +108,7 @@ public final class ExtendedConfigMixinPlugin implements IMixinConfigPlugin {
             List<Path> files = Lists.newArrayList(directoryStream);
             mixinArray = files
                     .stream()
-                    .flatMap(ExtendedConfigMixinPlugin::streamPath)
+                    .flatMap(ExtendedConfigMixinPlugin::walkPath)
                     .map(Path::toString)
                     .filter(name -> name.endsWith(".class"))
                     .map(name -> name.substring(mixinPackage.length() + 2, name.length() - ".class".length()))
