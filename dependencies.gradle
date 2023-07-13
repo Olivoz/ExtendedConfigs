@@ -68,4 +68,6 @@ dependencies {
     implementation rfg.deobf('curse.maven:oldjavawarning-293496:2867050')
     implementation rfg.deobf('curse.maven:opencomputers-223008:4630537')
     extractLibraries rfg.deobf('curse.maven:open-terrain-generator-265894:4612505')
+    implementation rfg.deobf('curse.maven:autoreglib-250363:2746011')
+    implementation rfg.deobf('curse.maven:quark-rotn-edition-417392:3895715')
 }

@@ -53,4 +53,7 @@ public final class Config {
     @net.minecraftforge.common.config.Config.RequiresMcRestart
     @net.minecraftforge.common.config.Config.Comment("This section contains settings for the Open Terrain Generator (OTG) mod")
     public static final OpenTerrainGeneratorConfig OPEN_TERRAIN_GENERATOR = new OpenTerrainGeneratorConfig();
+
+    @net.minecraftforge.common.config.Config.Comment("This section contains settings for the Quark mod")
+    public static final QuarkConfig QUARK = new QuarkConfig();
 }

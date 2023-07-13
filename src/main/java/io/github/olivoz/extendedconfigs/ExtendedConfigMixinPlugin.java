@@ -81,6 +81,9 @@ public final class ExtendedConfigMixinPlugin implements IMixinConfigPlugin {
             case "openterraingenerator":
                 return Config.OPEN_TERRAIN_GENERATOR.enabled;
 
+            case "quark":
+                return Config.QUARK.enabled;
+
             default:
                 return true;
         }
