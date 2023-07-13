@@ -91,7 +91,7 @@ public final class ExtendedConfigMixinPlugin implements IMixinConfigPlugin {
         try {
             return Files.walk(path);
         } catch (IOException e) {
-            return Stream.of(path);
+            return Stream.of();
         }
     }
 

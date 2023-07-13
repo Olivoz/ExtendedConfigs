@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
 public final class MixinWorldGenRegistry {
 
     @Unique
-    private static final Pattern idPattern = Pattern.compile("\\((-?\\d+)\\)");
+    private static final Pattern ID_PATTERN = Pattern.compile("\\((-?\\d+)\\)");
 
     @Inject(method = "getWorldGen", at = @At("RETURN"))
     public void extendedConfigsMixinGetWorldGen(CallbackInfoReturnable<List<WorldGenEntry>> cir) {
@@ -34,7 +34,7 @@ public final class MixinWorldGenRegistry {
 
     @Unique
     private int extendedConfigs$parseDim(String dim) {
-        Matcher matcher = idPattern.matcher(dim);
+        Matcher matcher = ID_PATTERN.matcher(dim);
         if (matcher.find()) return Math.abs(Integer.parseInt(matcher.group(1)));
         return Integer.MAX_VALUE;
     }
