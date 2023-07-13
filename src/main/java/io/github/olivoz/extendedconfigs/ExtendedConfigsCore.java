@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@IFMLLoadingPlugin.Name("ExtendedConfigs-Core")
+@IFMLLoadingPlugin.Name("ExtendedConfigsCore")
 @IFMLLoadingPlugin.MCVersion(ForgeVersion.mcVersion)
 public class ExtendedConfigsCore implements IFMLLoadingPlugin {
 
@@ -28,6 +28,9 @@ public class ExtendedConfigsCore implements IFMLLoadingPlugin {
 
         if (Config.ACTUALLY_BAUBLES.enabled)
             transformers.add("io.github.olivoz.extendedconfigs.asm.actuallybaubles.ActuallyBaublesTransformer");
+
+        if (Config.RANDOM_THINGS.enabled)
+            transformers.add("io.github.olivoz.extendedconfigs.asm.randomthings.EntityGoldenChickenTransformer");
 
         return transformers.toArray(new String[0]);
     }

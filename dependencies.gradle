@@ -70,4 +70,5 @@ dependencies {
     extractLibraries rfg.deobf('curse.maven:open-terrain-generator-265894:4612505')
     implementation rfg.deobf('curse.maven:autoreglib-250363:2746011')
     implementation rfg.deobf('curse.maven:quark-rotn-edition-417392:3895715')
+    implementation rfg.deobf('curse.maven:random-things-59816:2905241')
 }

@@ -1,9 +1,8 @@
 package io.github.olivoz.extendedconfigs.asm.actuallyadditions;
 
 import io.github.olivoz.extendedconfigs.configs.Config;
-import net.minecraft.init.Blocks;
+import io.github.olivoz.extendedconfigs.helper.ObfuscationHelper;
 import net.minecraft.launchwrapper.IClassTransformer;
-import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
@@ -140,9 +139,11 @@ public final class LensMiningTransformer implements IClassTransformer {
                 return;
             }
 
-            Type blockType = Type.getType(Blocks.class);
             replaceIfeq = true;
-            super.visitFieldInsn(Opcodes.GETSTATIC, blockType.getInternalName(), ObfuscationReflectionHelper.findField(Blocks.class, "field_150377_bs").getName(), "Lnet/minecraft/block/Block;");
+
+            String blocksType = "net/minecraft/init/Blocks";
+            String blockDesc = "Lnet/minecraft/block/Block;";
+            super.visitFieldInsn(Opcodes.GETSTATIC, blocksType, ObfuscationHelper.remapFieldName(blocksType, "field_150377_bs", blockDesc), blockDesc);
         }
 
         @Override

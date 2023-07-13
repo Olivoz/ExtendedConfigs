@@ -84,6 +84,9 @@ public final class ExtendedConfigMixinPlugin implements IMixinConfigPlugin {
             case "quark":
                 return Config.QUARK.enabled;
 
+            case "randomthings":
+                return Config.RANDOM_THINGS.enabled;
+
             default:
                 return true;
         }

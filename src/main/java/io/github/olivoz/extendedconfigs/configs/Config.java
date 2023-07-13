@@ -56,4 +56,7 @@ public final class Config {
 
     @net.minecraftforge.common.config.Config.Comment("This section contains settings for the Quark mod")
     public static final QuarkConfig QUARK = new QuarkConfig();
+
+    @net.minecraftforge.common.config.Config.Comment("This section contains settings for the Random Things mod")
+    public static final RandomThingsConfig RANDOM_THINGS = new RandomThingsConfig();
 }
