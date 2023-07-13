@@ -1,3 +1,54 @@
+import java.nio.file.*
+import java.util.stream.Collectors
+
+repositories {
+    maven { url = "https://maven.tterrag.com" }
+}
+
+configurations {
+    implementation.extendsFrom extractLibraries
+}
+
+private static void extractLibraryFile(Path filePath, projectDir) throws IOException {
+    File coreModFolder = new File("$projectDir/run/mods/1.12.2/")
+    coreModFolder.mkdirs()
+    try (FileOutputStream out = new FileOutputStream("$coreModFolder/${filePath.getFileName()}")) {
+        byte[] bytes = Files.readAllBytes(filePath)
+        out.write(bytes)
+    } catch (FileNotFoundException ex) {
+        ex.printStackTrace()
+    }
+}
+
+private static List<Path> findLibrariesInFolder(FileSystem fs, String folder) {
+    Path path = fs.getPath(folder)
+    if (!Files.exists(path) || !Files.isDirectory(path)) return new ArrayList<Path>(0)
+    return Files.list(path)
+            .filter { it.fileName.toString().endsWith(".jar") }
+            .collect(Collectors.toList())
+}
+
+def extractLibraryFiles = tasks.register('extractLibraryFiles') {
+    doLast {
+        def librariesPath = 'META-INF/libraries'
+        File coreModFolder = new File("$projectDir/run/mods/1.12.2/")
+        coreModFolder.deleteDir()
+        configurations.extractLibraries.getFiles()
+                .each {
+                    try (FileSystem fs = FileSystems.newFileSystem(Paths.get(it.path), getClass().getClassLoader())) {
+                        def files = new ArrayList<>(findLibrariesInFolder(fs, "/"));
+                        files.addAll(findLibrariesInFolder(fs, librariesPath))
+                        files.forEach { extractLibraryFile(it, project.projectDir) }
+                    } catch (IOException ex) {
+                        ex.printStackTrace()
+                    }
+                }
+    }
+}
+
+tasks.runClient.dependsOn(extractLibraryFiles)
+tasks.runServer.dependsOn(extractLibraryFiles)
+
 dependencies {
     implementation 'com.cleanroommc:configanytime:1.0'
     implementation rfg.deobf('curse.maven:actually-additions-228404:3117927')
@@ -6,8 +57,8 @@ dependencies {
     implementation rfg.deobf('curse.maven:bedrockores-275083:2602707')
     implementation rfg.deobf('curse.maven:botania-225643:3330934')
     implementation rfg.deobf('curse.maven:had-enough-items-557549:4571247')
-    compileOnly rfg.deobf('curse.maven:ender-core-231868:2972849')
-    compileOnly rfg.deobf('curse.maven:ender-io-64578:3328811')
+    extractLibraries rfg.deobf('curse.maven:ender-core-231868:2972849')
+    extractLibraries rfg.deobf('curse.maven:ender-io-64578:3328811')
     implementation rfg.deobf('curse.maven:ex-compressum-241967:2966941')
     implementation rfg.deobf('curse.maven:immersive-engineering-231951:2974106')
     implementation rfg.deobf('curse.maven:ae2-extended-life-570458:4632516')
@@ -16,5 +67,5 @@ dependencies {
     implementation rfg.deobf('curse.maven:libvulpes-236541:3801015')
     implementation rfg.deobf('curse.maven:oldjavawarning-293496:2867050')
     implementation rfg.deobf('curse.maven:opencomputers-223008:4630537')
-    implementation rfg.deobf('curse.maven:open-terrain-generator-265894:4612505')
+    extractLibraries rfg.deobf('curse.maven:open-terrain-generator-265894:4612505')
 }
