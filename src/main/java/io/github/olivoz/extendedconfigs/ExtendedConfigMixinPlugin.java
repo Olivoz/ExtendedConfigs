@@ -13,6 +13,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
+import requious.Requious;
 
 import java.io.IOException;
 import java.net.URI;
@@ -86,6 +87,9 @@ public final class ExtendedConfigMixinPlugin implements IMixinConfigPlugin {
 
             case "randomthings":
                 return Config.RANDOM_THINGS.enabled;
+
+            case Requious.MODID:
+                return Config.REQUIOUS_FRAKTO.enabled;
 
             default:
                 return true;
