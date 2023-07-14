@@ -10,6 +10,7 @@ import net.blay09.mods.excompressum.ExCompressum;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.relauncher.FMLLaunchHandler;
 import net.minecraftforge.fml.relauncher.Side;
+import net.silentchaos512.scalinghealth.ScalingHealth;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -90,6 +91,9 @@ public final class ExtendedConfigMixinPlugin implements IMixinConfigPlugin {
 
             case Requious.MODID:
                 return Config.REQUIOUS_FRAKTO.enabled;
+
+            case ScalingHealth.MOD_ID_LOWER:
+                return Config.SCALING_HEALTH.enabled;
 
             default:
                 return true;

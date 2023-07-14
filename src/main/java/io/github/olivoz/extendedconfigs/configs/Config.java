@@ -62,4 +62,7 @@ public final class Config {
 
     @net.minecraftforge.common.config.Config.Comment("This section contains settings for the Requious Frakto mod")
     public static final RequiousFraktoConfig REQUIOUS_FRAKTO = new RequiousFraktoConfig();
+
+    @net.minecraftforge.common.config.Config.Comment("This section contains settings for the Scaling Health mod")
+    public static final ScalingHealthConfig SCALING_HEALTH = new ScalingHealthConfig();
 }
