@@ -65,4 +65,7 @@ public final class Config {
 
     @net.minecraftforge.common.config.Config.Comment("This section contains settings for the Scaling Health mod")
     public static final ScalingHealthConfig SCALING_HEALTH = new ScalingHealthConfig();
+
+    @net.minecraftforge.common.config.Config.Comment("This section contains settings for the Tinker's Construct mod")
+    public static final TinkersConstructConfig TINKERS_CONSTRUCT = new TinkersConstructConfig();
 }

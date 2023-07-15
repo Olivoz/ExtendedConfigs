@@ -74,4 +74,6 @@ dependencies {
     implementation rfg.deobf('curse.maven:requious-frakto-336748:3218640')
     implementation rfg.deobf('curse.maven:silent-lib-242998:2851111')
     implementation rfg.deobf('curse.maven:scaling-health-248027:2816920')
+    implementation rfg.deobf('curse.maven:mantle-74924:2713386')
+    implementation rfg.deobf('curse.maven:tinkers-construct-74072:2902483')
 }

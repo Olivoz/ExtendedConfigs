@@ -95,6 +95,9 @@ public final class ExtendedConfigMixinPlugin implements IMixinConfigPlugin {
             case ScalingHealth.MOD_ID_LOWER:
                 return Config.SCALING_HEALTH.enabled;
 
+            case "tconstruct":
+                return Config.TINKERS_CONSTRUCT.enabled;
+
             default:
                 return true;
         }
